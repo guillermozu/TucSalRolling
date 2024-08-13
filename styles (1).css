@@ -77,6 +77,45 @@ i {
 
 }
 
+
+/*estilos login*/
+.login-body  {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    background-image:url("./assets/img-login.png") ;
+    background-size:cover ;
+    background-position: center;
+    height: 100vh;
+    
+  }
+  
+  .login-form {
+    width: 100%;
+    max-width: 400px;
+    padding: 15px;
+    margin: 0 auto;
+    border-radius: 10px;
+    color: antiquewhite;
+    box-shadow: 0 0 10px rgba(20, 16, 16, 0.1);
+    background-color: #020202;
+  }
+  
+
+  .btn a{
+    color: #020202;
+    text-decoration: none;
+  }
+
+  .container {
+    margin-top: 40vh;
+    
+  }
+
+
+
+
 @media (min-width: 768px){
 
 }
