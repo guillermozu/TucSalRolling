@@ -178,113 +178,43 @@
           <div class="modal-body">
             <form id="formulario-update" onsubmit="actualizarProducto(event)">
               <div class="mb-3">
-                <label for="nombre" class="form-label"
-                  ><span class="text-danger fw-bold">*</span>Nombre producto</label
-                >
+                <label for="nombre" class="form-label">
+                  <span class="text-danger fw-bold">*</span>Nombre producto
+                </label>
                 <input type="text" class="form-control" id="nombreProducto" />
               </div>
-              <!-- <div class="mb-3">
-                <label for="especies" class="form-label">Descripción</label>
-                <select
-                  id="especie"
-                  class="form-select"
-                  aria-label="especies"
-                ></select>
-              </div> -->
               <div class="mb-3">
-                <label for="raza" class="form-label"
-                  ><span class="text-danger fw-bold">*</span>Descripcion</label
-                >
+                <label for="descripcion" class="form-label">
+                  <span class="text-danger fw-bold">*</span>Descripción
+                </label>
                 <input type="text" class="form-control" id="descripcion" />
               </div>
               <div class="row">
                 <div class="col-12 col-md-6 mb-3">
-                  <label for="edad" class="form-label"
-                    ><span class="text-danger fw-bold">*</span>Precio</label
-                  >
+                  <label for="precio" class="form-label">
+                    <span class="text-danger fw-bold">*</span>Precio
+                  </label>
                   <input type="text" class="form-control" id="precio" />
                 </div>
-                <!-- <div class="col-12 col-md-6 mb-3">
-                  <label for="sexo" class="form-label">Sexo</label>
-                  <select
-                    id="sexo"
-                    class="form-select"
-                    aria-label="sexo"
-                  ></select>
-                </div> -->
-              </div>
-              <!-- <div class="row">
                 <div class="col-12 col-md-6 mb-3">
-                  <label for="estatura" class="form-label">Tamaño</label>
-                  <select
-                    id="estatura"
-                    class="form-select"
-                    aria-label="estatura"
-                  ></select>
-                </div> -->
-                <div class="col-12 col-md-6 mb-3">
-                  <label for="color" class="form-label"
-                    ><span class="text-danger fw-bold">* Cantidad</span></label
-                  >
+                  <label for="cantidad" class="form-label">
+                    <span class="text-danger fw-bold">*</span>Cantidad
+                  </label>
                   <input type="number" class="form-control" id="cantidad" />
                 </div>
               </div>
-
               <div class="row">
-                <!-- <div class="col mb-3">
-                  <div class="form-check form-switch">
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      role="switch"
-                      id="vacuna"
-                    />
-                    <label class="form-check-label" for="vacuna">Vacuna</label>
-                  </div> -->
-                  <div class="form-check form-switch">
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      role="switch"
-                      id="masVendido"
-                    />
-                    <label class="form-check-label" for="masVendido"
-                      >Mas Vendido</label
-                    >
-                  </div>
+                <div class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" role="switch" id="masVendido" />
+                  <label class="form-check-label" for="masVendido">Mas Vendido</label>
                 </div>
               </div>
               <div class="mb-6">
                 <label for="imagen" class="form-label">URL de imagen</label>
-                <input
-                  placeholder="url de imagen del producto"
-                  type="text"
-                  class="form-control"
-                  id="imagen"
-                />
+                <input placeholder="url de imagen del producto" type="text" class="form-control" id="imagen" />
               </div>
-              <!-- <div class="mb-3">
-                <label for="contacto" class="form-label"
-                  ><span class="text-danger fw-bold">*</span>Contacto</label
-                >
-                <input type="text" class="form-control" id="contacto" />
-              </div>
-              <div class="col mb-3">
-                <div class="form-check form-switch">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    role="switch"
-                    id="destacado"
-                  />
-                  <label class="form-check-label" for="destacado"
-                    >Destacado</label
-                  >
-                </div>
-              </div> -->
-              
               <div class="d-grid d-md-flex justify-content-md-end">
-                <button class="btn btn-warning">Actualizar</button>
+                <button id="btn-actualizar" type="submit" class="btn btn-warning">Actualizar</button>
               </div>
             </form>
           </div>

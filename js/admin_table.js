@@ -1,118 +1,101 @@
-let cuerpoTabla = document.querySelector("tbody") || null;
+// Obtener referencias a elementos del DOM
+let cuerpoTabla = document.querySelector("tbody");
 let contadorProductos = document.getElementById("count");
 let idProductos = null;
 const myModal = new bootstrap.Modal(document.getElementById("modalUpdate"));
-// let productos = JSON.parse(localStorage.getItem("productos")) || [];
+let listaproductos = JSON.parse(localStorage.getItem("productos")) || [];
 
+// Crear la tabla al cargar la página
 crearTabla();
 
+// Función para crear la tabla con los productos
 function crearTabla() {
   if (cuerpoTabla) {
     cuerpoTabla.innerHTML = "";
-    contadorProductos.innerText = "productos  registrados: " + productos.length;
-    // if(localStorage.getItem('mascotas')){
-    //     mascotas = JSON.parse(localStorage.getItem('mascotas'))
-    // }else{
-    //     mascotas=[]
-    // }
-    if (productos.length > 0) {
-      //recorrer el array
-      productos.map((producto) => {
+    contadorProductos.innerText =
+      "Productos registrados: " + listaproductos.length;
+
+    if (listaproductos.length > 0) {
+      listaproductos.forEach((producto, index) => {
         let fila = document.createElement("tr");
-        let celdas = /*HTML */ `<td>${producto.nombreProducto}</td>
-            <td>${producto.descripcion}</td>
-            <td>${producto.precio}</td>
-            <td>${producto.cantidad}</td>
-            <td>${producto.masVendido}</td>
-            <td>${producto.imagen}</td>
-                        <td>
-            <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalUpdate" onclick="cargarFormulario('${productos.id}')">
-            <i class="fa fa-pencil" aria-hidden="true"></i>
+        let celdas = /*HTML*/ `
+          <td>${producto.nombreProducto}</td>
+          <td>${producto.descripcion}</td>
+          <td>${producto.precio}</td>
+          <td>${producto.cantidad}</td>
+          <td>${producto.masVendido ? "Sí" : "No"}</td>
+          <td><img src="${producto.imagen}" alt="${
+          producto.nombreProducto
+        }" style="width: 50px; height: 50px;"></td>
+          <td>
+            <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalUpdate" onclick="cargarFormulario(${index})">
+              <i class="fa fa-pencil" aria-hidden="true"></i>
             </button>
-            <button class="btn btn-danger" onclick="borrarRegistro('${producto.id}')">
-            <i class="fa fa-trash-o" aria-hidden="true"></i>
+            <button class="btn btn-danger" onclick="borrarRegistro(${index})">
+              <i class="fa fa-trash-o" aria-hidden="true"></i>
             </button>
-            </td>`;
+          </td>`;
 
         fila.innerHTML = celdas;
-        cuerpoTabla.append(fila);
+        cuerpoTabla.appendChild(fila);
       });
     } else {
-      cuerpoTabla.append("No hay datos para mostrar");
+      cuerpoTabla.innerHTML =
+        "<tr><td colspan='7' class='text-center'>No hay datos para mostrar</td></tr>";
     }
   }
 }
 
-//cargar datos en el modal
-const cargarFormulario = (id) => {
-  idProductos = productos.findIndex((item) => item.id === id);
+// Función para cargar los datos del producto en el formulario de actualización
+const cargarFormulario = (index) => {
+  idProductos = index;
+  let producto = listaproductos[index];
   let formulario = document.querySelector("#formulario-update");
 
-  // Array.from(formulario.elements).forEach((campo) => {
-  //   //vacuna
-  //   if (campo.type === "checkbox") {
-  //     campo.checked = productos[idProductos][campo.id];
-  //   } else {
-  //     campo.value = productos[idProductos][campo.id]; //mascotas[1].especie
-  //   }
-  // });
-
-  //nombreProducto.value = productos[id].nombreProducto;
-  // .value = mascotas[idMascota].especie;
-  // raza.value = mascotas[idMascota].raza;
-  // edad.value = mascotas[idMascota].edad;
-  // sexo.value = mascotas[idMascota].sexo;
-  // estatura.value = mascotas[idMascota].estatura;
-  // color.value = mascotas[idMascota].color;
-  // vacunado.checked = mascotas[idMascota].vacunado;
-  // esterilizado.checked = mascotas[idMascota].esterilizado;
-  // contacto.value = mascotas[idMascota].contacto;
-  // destacado.checked = mascotas[idMascota].destacado;
-  // imagen.value = mascotas[idMascota].imagen;
-};
-//Actualizar los datos de mascota con el modal
-const actualizarProducto = (event) => {
-  event.preventDefault();
-
-  let formulario = document.querySelector("#formulario-update");
-
-  // Array.from(formulario.elements).forEach((campo) => {
-  //   //vacuna
-  //   if (campo.type === "checkbox") {
-  //     mascotas[idMascota][campo.id] = campo.checked;
-  //   } else {
-  //     mascotas[idMascota][campo.id] = campo.value; //mascotas[1].especie
-  //   }
-  // });
-  // mascotas[idMascota].nombre = nombre.value
-  // especie.value = mascotas[idMascota].especie;
-  // raza.value = mascotas[idMascota].raza;
-  // edad.value = mascotas[idMascota].edad;
-  // sexo.value = mascotas[idMascota].sexo;
-  // estatura.value = mascotas[idMascota].estatura;
-  // color.value = mascotas[idMascota].color;
-  // mascotas[idMascota].vacuna= vacuna.checked
-  // esterilizado.checked = mascotas[idMascota].esterilizado;
-  // contacto.value = mascotas[idMascota].contacto;
-  // destacado.checked = mascotas[idMascota].destacado;
-  // imagen.value = mascotas[idMascota].imagen;
-  localStorage.setItem("productos", JSON.stringify(productos));
-  crearTabla();
-  myModal.hide();
-};
-
-const borrarRegistro = (id) => {
-  let index = productos.findIndex((item) => item.id === id);
-
-  if (index >= 0) {
-    let validar = confirm(
-      `Está seguro que quiere eliminar a ${productos[index].nombre}`
-    );
-
-    if (validar) {
-      productos.splice(index, 1);
-      localStorage.setItem("productos", JSON.stringify(productos));
-      crearTabla();
+  Array.from(formulario.elements).forEach((campo) => {
+    if (campo.type === "checkbox") {
+      campo.checked = producto[campo.id];
+    } else {
+      campo.value = producto[campo.id];
     }
+  });
+};
+
+// Función para actualizar los datos del producto
+const actualizarProducto = (event) => {
+  event.preventDefault(); // Evitar el comportamiento predeterminado del formulario
+
+  let formulario = document.querySelector("#formulario-update");
+
+  // Actualizar los valores en listaproductos
+  Array.from(formulario.elements).forEach((campo) => {
+    if (campo.type === "checkbox") {
+      listaproductos[idProductos][campo.id] = campo.checked;
+    } else {
+      listaproductos[idProductos][campo.id] = campo.value;
+    }
+  });
+
+  // Guardar la lista actualizada en localStorage
+  localStorage.setItem("productos", JSON.stringify(listaproductos));
+
+  // Recargar la lista de productos desde localStorage
+  listaproductos = JSON.parse(localStorage.getItem("productos"));
+
+  crearTabla();
+  myModal.hide(); // Cerrar el modal después de la actualización
+};
+
+// Función para borrar un producto del array y actualizar la tabla
+const borrarRegistro = (index) => {
+  let producto = listaproductos[index];
+  let validar = confirm(
+    `¿Está seguro que quiere eliminar a ${producto.nombreProducto}?`
+  );
+
+  if (validar) {
+    listaproductos.splice(index, 1);
+    localStorage.setItem("productos", JSON.stringify(listaproductos));
+    crearTabla();
   }
 };
