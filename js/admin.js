@@ -39,12 +39,6 @@ const validarUsuario = () => {
 
 // validarUsuario();
 
-// //array o lista de especies
-// let especies = ["perro", "gato", "anfibio", "roedor", "ave", "exótico", "pez"];
-// //array o lista de sexo
-// let sexo = ["macho", "hembra"];
-// //array o lista de estatura o tamaño
-// let estaturas = ["pequeño", "mediano", "grande"];
 
 //capturar elementos del DOM de los selects
 // let listaEspecies = document.querySelector('#especies')
@@ -55,34 +49,6 @@ let cantidad = document.querySelector("#cantidad");
 let masVendido = document.getElementById("masVendido");
 let imagen = document.querySelector("#imagen");
 
-// cargar las listas con datos
-// especies.forEach((especie) => {
-//   let option = document.createElement("option");
-//   option.value = especie;
-//   option.innerText = especie;
-//   listaEspecies.append(option);
-
-//   {
-//     /* <select>
-// <option value='perro'>perro</option>
-// <option value='gato'>gato</option>
-// </select> */
-//   }
-// });
-
-// sexo.forEach((item) => {
-//   let option = document.createElement("option");
-//   option.value = item;
-//   option.innerText = item;
-//   listaSexo.append(option);
-// });
-
-// estaturas.forEach((item) => {
-//   let option = document.createElement("option");
-//   option.value = item;
-//   option.innerText = item;
-//   listaEstatura.append(option);
-// });
 
 // crear la función para agregar mascotas nuevas
 const agregarProductos = (event) => {
