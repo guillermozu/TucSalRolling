@@ -1,0 +1,17 @@
+.margen{
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.tarjetas{
+    justify-content: center;
+}
+
+.publicidad img{
+    width: 100%;
+    overflow: hidden;
+}
+
+.navbar-brand {
+    height: 100px;
+  }
