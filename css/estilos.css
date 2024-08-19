@@ -1,0 +1,22 @@
+.margen{
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.tarjetas{
+    justify-content: center;
+}
+
+.publicidad img{
+    width: 100%;
+    overflow: hidden;
+}
+
+.navbar-brand {
+    font-size: 18px; /* Aumenta el tamaño de la fuente */
+    line-height: 30px;
+  }
+
+.navbar-brand a {
+    line-height: 30px; /* Aumenta la altura de la línea */
+}
