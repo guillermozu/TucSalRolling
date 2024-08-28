@@ -121,7 +121,7 @@ const sportsSupplements = [
  card.classList.add('card');
  card.style.width = '18rem';
  card.classList.add('m-2');
- card.innerHTML = ` <img src="${producto.imagen}" class="card-img-top" alt="${producto.nombreProducto}"> <div class="card-body"> <h5 class="card-title">${producto.nombreProducto}</h5> <p class="card-text">Precio: $${producto.precio}</p> <a href="#" class="btn btn-primary">Comprar</a> </div> `;
+ card.innerHTML = ` <img src="${producto.imagen}" class="card-img-top" alt="${producto.nombreProducto}"> <div class="card-body"> <h5 class="card-title">${producto.nombreProducto}</h5> <p class="card-text">Precio: $${producto.precio}</p> <a href="./pages/detalle_productos.html?nombreProducto=${producto.nombreProducto}" class="btn btn-primary">Comprar</a> </div> `;
  contenedor.appendChild(card);});
  
  

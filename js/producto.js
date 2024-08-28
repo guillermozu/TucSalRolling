@@ -1,25 +1,25 @@
 let url = new URL(location.href);
-let idProducto = url.searchParams.get("id");
+let nombreProducto = url.searchParams.get("nombreProducto");
 
-console.log(idProducto);
+console.log(nombreProducto);
 
-let productos = JSON.parse(localStorage.getItem("productos"));
+let listado = JSON.parse(localStorage.getItem("productos"));
 
-let producto = productos.find((item) => item.id === idProducto);
+let producto = listado.find((item) => item.nombreProducto === nombreProducto);
 
 // console.log(mascota);
-document.querySelector("h3").innerText = producto.nombreProducto;
+document.querySelector("#nombreBebida").innerText = producto.nombreProducto;
 
 //Agregar imagen de la mascota
 document.querySelector("#imagen-mascota").src = producto.imagen;
-document.querySelector("#imagen-mascota").alt = producto.nombre;
+document.querySelector("#imagen-mascota").alt = producto.nombreProducto;
 
 //Crear tabla con los datos
 let contenedorTabla = document.querySelector("tbody");
 let fila = document.createElement("tr");
-let celdas = /*HTML */ `<td>${producto.especie}</td>
-<td>${producto.estatura}</td>
-<td>${producto.edad}</td>
-<td>${producto.sexo}</td>`;
+let celdas = /*HTML */ `<td>${producto.nombreProducto}</td>
+<td>${producto.descripcion}</td>
+<td>${producto.precio}</td>
+<td>${producto.masVendido}</td>`;
 fila.innerHTML = celdas;
 contenedorTabla.append(fila);
